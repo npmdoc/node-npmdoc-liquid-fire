@@ -1,0 +1,414 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/ember-animation/liquid-fire#readme"
+
+    >liquid-fire (v0.27.2)</a>
+</h1>
+<h4>Animated transitions for Ember applications.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.liquid-fire">module liquid-fire</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire._hasShimAMDSupport">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>_hasShimAMDSupport
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire._versionSpecificTree">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>_versionSpecificTree
+            <span class="apidocSignatureSpan">(which, tree)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire._withVersionSpecific">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>_withVersionSpecific
+            <span class="apidocSignatureSpan">(which, tree, version)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire.included">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>included
+            <span class="apidocSignatureSpan">(app)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire.init">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire.treeForAddon">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>treeForAddon
+            <span class="apidocSignatureSpan">(_tree)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire.treeForAddonTemplates">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>treeForAddonTemplates
+            <span class="apidocSignatureSpan">(_tree)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.liquid-fire.treeForVendor">
+            function <span class="apidocSignatureSpan">liquid-fire.</span>treeForVendor
+            <span class="apidocSignatureSpan">(tree)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">liquid-fire.</span>name</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.liquid-fire" id="apidoc.module.liquid-fire">module liquid-fire</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire._hasShimAMDSupport" id="apidoc.element.liquid-fire._hasShimAMDSupport">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>_hasShimAMDSupport
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_hasShimAMDSupport = function (){
+  var app = this._findHost();
+  return &#x27;amdModuleNames&#x27; in app;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+
+included: function(app){
+  if (process.env.EMBER_CLI_FASTBOOT) {
+    // in fastboot we use the shim by itself, which will make
+    // importing velocity a noop.
+    this.import(&#x27;vendor/shims/velocity.js&#x27;);
+  } else if (this.<span class="apidocCodeKeywordSpan">_hasShimAMDSupport</span>()) {
+    // if this ember-cli is new enough to do amd imports
+    // automatically, use that
+    this.import(&#x27;vendor/velocity/velocity.js&#x27;, {
+      using: [{
+        transformation: &#x27;amd&#x27;, as: &#x27;velocity&#x27;
+      }]
+    });
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire._versionSpecificTree" id="apidoc.element.liquid-fire._versionSpecificTree">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>_versionSpecificTree
+        <span class="apidocSignatureSpan">(which, tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_versionSpecificTree = function (which, tree) {
+  var emberVersion = this.versionChecker.forEmber();
+
+  if ((emberVersion.gt(&#x27;2.9.0-beta&#x27;) &#x26;&#x26; emberVersion.lt(&#x27;2.9.0&#x27;))|| emberVersion.gt(&#x27;2.10.0-alpha&#x27;)) {
+    return this._withVersionSpecific(which, tree, &#x27;2.9&#x27;);
+  } else if (!emberVersion.lt(&#x27;1.13.0&#x27;)) {
+    return this._withVersionSpecific(which, tree, &#x27;1.13&#x27;);
+  } else {
+    throw new Error(&#x22;This version of liquid-fire supports Ember versions &#x3e;= 1.13.0.&#x22;);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      app.import(asset, options);
+    };
+  }
+},
+
+
+treeForAddon: function(_tree) {
+  var tree = this.<span class="apidocCodeKeywordSpan">_versionSpecificTree</span>(&#x27;addon&#x27;, _tree);
+  return this._super.treeForAddon.call(this, tree);
+},
+
+treeForAddonTemplates: function(_tree) {
+  var tree = this._versionSpecificTree(&#x27;templates&#x27;, _tree);
+  return this._super.treeForAddonTemplates.call(this, tree);
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire._withVersionSpecific" id="apidoc.element.liquid-fire._withVersionSpecific">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>_withVersionSpecific
+        <span class="apidocSignatureSpan">(which, tree, version)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_withVersionSpecific = function (which, tree, version) {
+  var versionSpecificPath = path.join(this.root, &#x27;version-specific-&#x27; + version);
+  var destDir;
+  var include;
+
+  if (which === &#x27;templates&#x27;) {
+    destDir = &#x27;version-specific&#x27;;
+    include = [&#x22;*.hbs&#x22;];
+  } else {
+    destDir = &#x27;ember-internals/version-specific&#x27;;
+  }
+
+  var funneled = new Funnel(versionSpecificPath, {
+    include: include,
+    destDir: destDir
+  });
+
+  return mergeTrees([tree, funneled]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return this._super.treeForAddonTemplates.call(this, tree);
+},
+
+_versionSpecificTree: function(which, tree) {
+  var emberVersion = this.versionChecker.forEmber();
+
+  if ((emberVersion.gt(&#x27;2.9.0-beta&#x27;) &#x26;&#x26; emberVersion.lt(&#x27;2.9.0&#x27;))|| emberVersion.gt(&#x27;2.10.0-alpha
+&#x27;)) {
+    return this.<span class="apidocCodeKeywordSpan">_withVersionSpecific</span>(which, tree, &#x27;2.9&#x27;);
+  } else if (!emberVersion.lt(&#x27;1.13.0&#x27;)) {
+    return this._withVersionSpecific(which, tree, &#x27;1.13&#x27;);
+  } else {
+    throw new Error(&#x22;This version of liquid-fire supports Ember versions &#x3e;= 1.13.0.&#x22;);
+  }
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire.included" id="apidoc.element.liquid-fire.included">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>included
+        <span class="apidocSignatureSpan">(app)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">included = function (app){
+  if (process.env.EMBER_CLI_FASTBOOT) {
+    // in fastboot we use the shim by itself, which will make
+    // importing velocity a noop.
+    this.import(&#x27;vendor/shims/velocity.js&#x27;);
+  } else if (this._hasShimAMDSupport()) {
+    // if this ember-cli is new enough to do amd imports
+    // automatically, use that
+    this.import(&#x27;vendor/velocity/velocity.js&#x27;, {
+      using: [{
+        transformation: &#x27;amd&#x27;, as: &#x27;velocity&#x27;
+      }]
+    });
+  } else {
+    // otherwise apply our own amd shim
+    this.import(&#x27;vendor/velocity/velocity.js&#x27;);
+    this.import(&#x27;vendor/shims/velocity.js&#x27;);
+  }
+
+  if (!process.env.EMBER_CLI_FASTBOOT) {
+    this.import(&#x27;vendor/match-media/matchMedia.js&#x27;);
+  }
+
+  this.import(&#x27;vendor/liquid-fire.css&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire.init" id="apidoc.element.liquid-fire.init">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function () {
+  if (this._super.init) {
+    this._super.init.apply(this, arguments);
+  }
+
+  this.versionChecker = new VersionChecker(this);
+  this.versionChecker.for(&#x27;ember-cli&#x27;, &#x27;npm&#x27;).assertAbove(&#x27;0.2.0&#x27;);
+
+  // Shim this.import for Engines support
+  if (!this.import) {
+    // Shim from https://github.com/ember-cli/ember-cli/blob/5d64cfbf1276cf1e3eb88761df4546c891b5efa6/lib/models/addon.js#L387
+    this._findHost = function findHostShim() {
+      var current = this;
+      var app;
+
+      // Keep iterating upward until we don&#x27;t have a grandparent.
+      // Has to do this grandparent check because at some point we hit the project.
+      do {
+        app = current.app || app;
+      } while (current.parent.parent &#x26;&#x26; (current = current.parent));
+
+      return app;
+    };
+    // Shim from https://github.com/ember-cli/ember-cli/blob/5d64cfbf1276cf1e3eb88761df4546c891b5efa6/lib/models/addon.js#L443
+    this.import = function importShim(asset, options) {
+      var app = this._findHost();
+      app.import(asset, options);
+    };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire.treeForAddon" id="apidoc.element.liquid-fire.treeForAddon">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>treeForAddon
+        <span class="apidocSignatureSpan">(_tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">treeForAddon = function (_tree) {
+  var tree = this._versionSpecificTree(&#x27;addon&#x27;, _tree);
+  return this._super.treeForAddon.call(this, tree);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire.treeForAddonTemplates" id="apidoc.element.liquid-fire.treeForAddonTemplates">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>treeForAddonTemplates
+        <span class="apidocSignatureSpan">(_tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">treeForAddonTemplates = function (_tree) {
+  var tree = this._versionSpecificTree(&#x27;templates&#x27;, _tree);
+  return this._super.treeForAddonTemplates.call(this, tree);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.liquid-fire.treeForVendor" id="apidoc.element.liquid-fire.treeForVendor">
+        function <span class="apidocSignatureSpan">liquid-fire.</span>treeForVendor
+        <span class="apidocSignatureSpan">(tree)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">treeForVendor = function (tree){
+  var velocityPath = path.dirname(require.resolve(&#x27;velocity-animate&#x27;));
+  var velocityTree = new Funnel(this.treeGenerator(velocityPath), {
+    srcDir: &#x27;/&#x27;,
+    destDir: &#x27;velocity&#x27;
+  });
+
+  var matchMediaPath = path.dirname(require.resolve(&#x27;match-media&#x27;));
+  var matchMediaTree = new Funnel(this.treeGenerator(matchMediaPath), {
+    srcDir: &#x27;/&#x27;,
+    destDir: &#x27;match-media&#x27;
+  });
+
+  return mergeTrees([tree, velocityTree, matchMediaTree]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
